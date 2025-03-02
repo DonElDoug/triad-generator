@@ -116,6 +116,7 @@ body {
     flex-direction: column;
     height: 100%;
     margin-top: calc(-1 * var(--unit)); /* Moved rows higher */
+    transition: height var(--transition-speed); /* Add transition for height */
 }
 
 .output-row {
