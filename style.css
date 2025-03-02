@@ -31,7 +31,7 @@ body {
 .bpm_container {
     background: var(--card-bg);
     border-radius: 18px;
-    padding: calc(4 * var(--unit));
+    padding: calc(4 * var(--unit)) calc(1 * var(--unit)); /* Reduced horizontal padding */
     max-width: 600px;
     width: 100%;
     display: flex;
@@ -43,40 +43,43 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    padding: 0 calc(1 * var(--unit)); /* Add subtle padding */
+    padding: 0; /* Remove horizontal padding */
 }
 
-.arrow {
-    width: calc(2 * var(--unit)); /* Reduced from 20px to 16px */
+/* Arrow styles linked only to the header */
+.header .arrow {
+    width: calc(2 * var(--unit));
     aspect-ratio: 1;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity var(--transition-speed);
-    flex-shrink: 0; /* Prevent resizing */
+    flex-shrink: 0;
+    padding: calc(0.25 * var(--unit)); /* Consistent arrow padding */
 }
 
 .title {
     font-size: calc(3 * var(--unit));
     letter-spacing: 1px;
     text-align: center;
-    flex-grow: 1; /* Takes remaining space */
+    flex-grow: 1;
     position: relative;
     z-index: 1;
-    margin: 0; /* Remove default margins */
+    margin: 0;
+    padding: 0 calc(0.25 * var(--unit)); /* Reduced title padding */
 }
 
-/* Create overlapping effect */
-.arrow.prev {
-    margin-right: calc(-0.5 * var(--unit)); /* Pull left arrow closer */
-    z-index: 2;
+/* Added a small positive margin to separate the arrows from the title */
+.header .arrow.prev {
+    margin-right: calc(0.5 * var(--unit));
 }
 
-.arrow.next {
-    margin-left: calc(-0.5 * var(--unit)); /* Pull right arrow closer */
-    z-index: 2;
+.header .arrow.next {
+    margin-left: calc(0.5 * var(--unit));
 }
+
 .generate-btn {
-    width: 100%;
+    width: 40%;
+    align-self: center; /* Center the button horizontally */
     padding: calc(2 * var(--unit)) calc(3 * var(--unit));
     background: var(--primary);
     border: none;
@@ -85,38 +88,41 @@ body {
     font-size: calc(2.25 * var(--unit));
     cursor: pointer;
     transition: all var(--transition-speed);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .generate-btn:hover {
     background: #22ad5f;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .generate-btn:active {
     transform: scale(0.98);
     transition-duration: 0.1s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .output-container {
     background: var(--card-bg);
     border-radius: 12px;
-    padding: calc(3 * var(--unit));
+    padding: calc(1 * var(--unit)) calc(3 * var(--unit)) calc(3 * var(--unit)); /* Reduced top padding */
     height: 240px;
     overflow: hidden;
     position: relative;
-    padding-top: calc(1 * var(--unit)); /* e.g., reduced from calc(3 * var(--unit)) */
 }
 
 .output-card {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-top: -calc(0.5 * var(--unit)); /* Adjust the value as needed */
+    margin-top: calc(-1 * var(--unit)); /* Moved rows higher */
 }
 
 .output-row {
     flex: 1;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: calc(1.5 * var(--unit)) 0;
     border-bottom: 1px solid var(--border-color);
     transition: all var(--transition-speed);
@@ -131,7 +137,7 @@ body {
     display: none;
     opacity: 0;
     transform: translateY(-5px);
-    transition: all var(--transition-speed);
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
 }
 
 .pairing-row.visible {
@@ -144,4 +150,55 @@ body {
     font-size: calc(2.25 * var(--unit));
     color: var(--primary);
     font-weight: bold;
+    transition: color var(--transition-speed);
+}
+
+.output-value:hover {
+    color: #20965a;
+}
+
+/* Additional rules to keep arrows near the title */
+.header {
+    justify-content: center; /* Center the header content */
+}
+
+.header .title {
+    flex-grow: 0; /* Prevent the title from expanding too much */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    .bpm_container {
+        padding: calc(3 * var(--unit)) calc(1 * var(--unit));
+    }
+
+    .title {
+        font-size: calc(2.5 * var(--unit));
+    }
+
+    .generate-btn {
+        width: 80%;
+        padding: calc(1.5 * var(--unit)) calc(2 * var(--unit));
+        font-size: calc(2 * var(--unit));
+    }
+
+    .output-container {
+        padding: calc(1 * var(--unit)) calc(2 * var(--unit)) calc(2 * var(--unit));
+        height: auto;
+    }
+
+    .output-value {
+        font-size: calc(2 * var(--unit));
+    }
+
+    .output-row {
+        padding: calc(1 * var(--unit)) 0;
+    }
+}
+
+/* Prevent text from breaking awkwardly */
+.output-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
