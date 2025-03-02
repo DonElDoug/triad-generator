@@ -8,8 +8,8 @@
 :root {
     --primary: #29be6f;
     --primary-dark: #1a7d4a;
-    --bg: #18181800;
-    --card-bg: #252525;
+    --bg: transparent;  /* Changed from dark to transparent */
+    --card-bg: #252525;  /* Leaving the container background; change if desired */
     --shadow: rgba(0, 0, 0, 0.3);
     --neon: #29be6f;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,12 +22,11 @@
 }
 
 body {
-    background: var(--bg);
+    background: transparent;  /* Set overall background to transparent */
     font-family: 'iAWriterMonoS', monospace;
     color: white;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
+    /* Removed grid centering & min-height */
+    /* If you want the widget responsive, consider adding appropriate width rules */
 }
 
 .bpm_container {
