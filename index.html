@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Key Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bpm_container">
+        <header class="header">
+            <img src="icons/arrow_left.png" alt="Previous" class="arrow prev" draggable="false">
+            <h1 class="title">Level 1</h1>
+            <img src="icons/arrow_right.png" alt="Next" class="arrow next" draggable="false">
+        </header>
+        
+        <button id="Generate" class="generate-btn" aria-label="Generate new values">
+            <span class="btn-text">Generate</span>
+        </button>
+
+        <div class="output-container">
+            <div class="output-card">
+                <div class="output-row">
+                    <strong>KEY:</strong>
+                    <span id="key" class="output-value">-</span>
+                </div>
+                <div class="output-row">
+                    <strong>QUALITY:</strong>
+                    <span id="quality" class="output-value">-</span>
+                </div>
+                <div class="output-row">
+                    <strong>DIRECTION:</strong>
+                    <span id="direction" class="output-value">-</span>
+                </div>
+                <div class="output-row" id="pairing-row">
+                    <strong>PAIRING:</strong>
+                    <span id="pairing" class="output-value">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
