@@ -20,7 +20,7 @@
 }
 
 body {
-    background: transparent;
+    background: #252525;
     color: var(--text-color);
     line-height: 1.5;
     min-height: 100vh;
@@ -82,7 +82,7 @@ body {
 .generate-btn {
     width: 10%;
     align-self: center; /* Center the button horizontally */
-    padding: calc(2 * var(--unit)) calc(3 * var(--unit));
+    padding: calc(1 * var(--unit)) calc(3 * var(--unit));
     background: var(--primary);
     border: none;
     border-radius: 12px;
