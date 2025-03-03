@@ -32,11 +32,13 @@ body {
     background: var(--card-bg);
     border-radius: 18px;
     padding: calc(4 * var(--unit)) calc(1 * var(--unit)); /* Reduced horizontal padding */
-    max-width: 600px;
-    width: 100%;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
     display: flex;
     flex-direction: column;
     gap: calc(3 * var(--unit));
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
 .header {
@@ -70,15 +72,15 @@ body {
 
 /* Added a small positive margin to separate the arrows from the title */
 .header .arrow.prev {
-    margin-right: calc(0.5 * var(--unit));
+    margin-right: calc(0.9 * var(--unit));
 }
 
 .header .arrow.next {
-    margin-left: calc(0.5 * var(--unit));
+    margin-left: calc(0.9 * var(--unit));
 }
 
 .generate-btn {
-    width: 40%;
+    width: 10%;
     align-self: center; /* Center the button horizontally */
     padding: calc(2 * var(--unit)) calc(3 * var(--unit));
     background: var(--primary);
@@ -106,17 +108,23 @@ body {
     background: var(--card-bg);
     border-radius: 12px;
     padding: calc(1 * var(--unit)) calc(3 * var(--unit)) calc(3 * var(--unit)); /* Reduced top padding */
-    height: 240px;
+    width: 90%; /* Adjusted width to take more space */
+    height: auto; /* Adjusted height to be auto */
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center; /* Center the container content */
 }
 
 .output-card {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 400px; /* Set maximum width */
     margin-top: calc(-1 * var(--unit)); /* Moved rows higher */
     transition: height var(--transition-speed); /* Add transition for height */
+    position: relative; /* Ensure pairing row is positioned relative to this */
+    margin-bottom: calc(3 * var(--unit)); /* Add margin to accommodate pairing row */
 }
 
 .output-row {
@@ -124,9 +132,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: calc(1.5 * var(--unit)) 0;
+    padding: calc(1 * var(--unit)) calc(1.5 * var(--unit)); /* Reduced horizontal padding */
     border-bottom: 1px solid var(--border-color);
     transition: all var(--transition-speed);
+    width: 100%; /* Ensure it takes full width */
+    max-width: 400px; /* Set maximum width */
 }
 
 .output-row:last-child {
@@ -135,16 +145,16 @@ body {
 
 .pairing-row {
     flex: 1;
-    display: none;
+    height: 0; /* Initially set height to 0 */
     opacity: 0;
-    transform: translateY(-5px);
-    transition: opacity var(--transition-speed), transform var(--transition-speed);
+    overflow: hidden; /* Hide overflow */
+    transition: height var(--transition-speed), opacity var(--transition-speed);
+    width: 100%; /* Ensure it takes full width */
 }
 
 .pairing-row.visible {
-    display: flex;
+    height: auto; /* Set height to auto when visible */
     opacity: 1;
-    transform: translateY(0);
 }
 
 .output-value {
