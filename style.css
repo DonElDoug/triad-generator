@@ -80,15 +80,8 @@ body {
 }
 
 .generate-btn {
-    /* Fixed dimensions instead of percentage-based width */
-    width: 200px;
-    min-width: 200px;
-    height: 40px;
-    
-    /* Center alignment */
-    align-self: center;
-    
-    /* Consistent padding */
+    width: 10%;
+    align-self: center; /* Center the button horizontally */
     padding: calc(1 * var(--unit)) calc(3 * var(--unit));
     background: var(--primary);
     border: none;
@@ -195,9 +188,9 @@ body {
     }
 
     .generate-btn {
-/* Remove the width override */
+        width: 80%;
+        padding: calc(1.5 * var(--unit)) calc(2 * var(--unit));
         font-size: calc(2 * var(--unit));
-padding: calc(1 * var(--unit)) calc(2 * var(--unit));
     }
 
     .output-container {
