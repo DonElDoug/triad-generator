@@ -48,7 +48,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 200px;
-    padding: 0 calc(0.5 * var(--unit)); /* Added container padding */
+    padding: 0 calc(0.5 * var(--unit));
 }
 
 .header .arrow {
@@ -101,10 +101,9 @@ body {
     padding: calc(1 * var(--unit)) calc(3 * var(--unit)) calc(3 * var(--unit));
     width: 90%;
     max-width: 400px;
-    overflow: visible; /* Changed from hidden */
+    overflow: visible;
 }
 
-/* Add position relative so that the absolutely positioned pairing row is contained */
 .output-card {
     position: relative;
     display: flex;
@@ -113,8 +112,6 @@ body {
     transition: all var(--transition-speed);
 }
 
-/* Modify .pairing-row to use absolute positioning and a scale transform */
-/* This makes it appear smoothly without shifting the layout */
 .pairing-row {
     position: absolute;
     top: 100%;
@@ -153,24 +150,46 @@ body {
     color: var(--primary);
     font-weight: bold;
     transition: color var(--transition-speed);
+    /* Desktop: single-line with ellipsis */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 60%;
 }
 
+/* Mobile Responsive Styles */
 @media (max-width: 600px) {
     .bpm_container {
         padding: calc(2 * var(--unit));
         border-radius: 0;
     }
 
+    .header {
+        max-width: 100%;
+        padding: 0 calc(1 * var(--unit));
+    }
+
+    .title {
+        font-size: clamp(20px, 4vw, 22px);
+    }
+
+    .generate-btn {
+        width: 130px;
+        height: 36px;
+        font-size: clamp(14px, 3vw, 14px);
+    }
+
     .output-container {
         width: 95%;
+        max-width: 95%;
         padding: calc(1 * var(--unit)) calc(2 * var(--unit));
     }
 
     .output-value {
-        max-width: 55%;
+        /* Mobile: allow wrapping to show full text */
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: 100%;
     }
 }

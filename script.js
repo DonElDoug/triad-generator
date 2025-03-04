@@ -21,13 +21,23 @@ document.addEventListener("DOMContentLoaded", () => {
         directions: ["Clockwise", "Counter Clockwise"],
         qualities: {
             1: ["Major", "Minor"],
-            2: ["Major-Major", "Major-Minor", "Minor-Minor", "Minor-Major"]
+            2: ["Major-Major", "Major-Minor", "Minor-Minor", "Minor-Major"],
+            3: [
+                "Major/Sus2", "Major/Sus4", "Major/Sus2/Minor", "Major/Sus4/Minor",
+                "Minor/Sus2", "Minor/Sus4"
+            ]
         },
         pairings: {
-            "Major-Major": ["I-IV", "I-V", "IV-I", "V-I"],
-            "Major-Minor": ["I-vi", "I-ii", "I-iii"],
-            "Minor-Minor": ["i-iv", "i-v", "iv-i", "v-i"],
-            "Minor-Major": ["vi-I", "ii-I", "iii-I"]
+            "Major-Major": ["I → IV", "I → V", "IV → I", "V → I"],
+            "Major-Minor": ["I → vi", "I → ii", "I → iii"],
+            "Minor-Minor": ["i → iv", "i → v", "iv → i", "v → i"],
+            "Minor-Major": ["vi → I", "ii → I", "iii → I"],
+            "Major/Sus2": ["I → I sus2 → V", "I → I sus2 → IV"],
+            "Major/Sus4": ["I → I sus4 → V", "I → I sus4 → IV"],
+            "Major/Sus2/Minor": ["I → I sus2 → i", "I → I sus2 → v", "I → I sus2 → ii", "I → ii sus2 → ii"],
+            "Major/Sus4/Minor": ["I → I sus4 → i", "I → I sus4 → v", "I → I sus4 → ii", "I → ii sus4 → ii"],
+            "Minor/Sus2": ["i → i sus2 → v", "i → i sus2 → iv"],
+            "Minor/Sus4": ["i → i sus4 → v", "i → i sus4 → iv"]
         },
         levels: {
             total: 5,
@@ -57,22 +67,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const key = CONFIG.keys[Math.floor(Math.random() * CONFIG.keys.length)];
         const direction = CONFIG.directions[Math.floor(Math.random() * 2)];
         
+        let qualityKey, pairing;
+
         if (level === 1) {
             // Level 1: Simple Major/Minor qualities
-            const quality = CONFIG.qualities[1][Math.floor(Math.random() * 2)];
+            qualityKey = CONFIG.qualities[1][Math.floor(Math.random() * CONFIG.qualities[1].length)];
             resetValues();
             UI.displays.key.textContent = key;
             UI.displays.direction.textContent = direction;
-            UI.displays.quality.textContent = quality;
-        } else {
-            // Level 2+: Advanced qualities and pairings
-            const qualityKey = CONFIG.qualities[2][Math.floor(Math.random() * CONFIG.qualities[2].length)];
-            const pairing = CONFIG.pairings[qualityKey][Math.floor(Math.random() * CONFIG.pairings[qualityKey].length)];
+            UI.displays.quality.textContent = qualityKey;
+        } else if (level === 2) {
+            // Level 2: Advanced qualities and pairings
+            qualityKey = CONFIG.qualities[2][Math.floor(Math.random() * CONFIG.qualities[2].length)];
+            pairing = CONFIG.pairings[qualityKey][Math.floor(Math.random() * CONFIG.pairings[qualityKey].length)];
             
             resetValues();
             UI.displays.key.textContent = key;
             UI.displays.direction.textContent = direction;
             UI.displays.quality.textContent = qualityKey.replace("-", "/");
+            UI.displays.pairing.textContent = pairing;
+        } else if (level === 3) {
+            // Level 3: Mixing suspended chords with Major/Minor
+            qualityKey = CONFIG.qualities[3][Math.floor(Math.random() * CONFIG.qualities[3].length)];
+            pairing = CONFIG.pairings[qualityKey][Math.floor(Math.random() * CONFIG.pairings[qualityKey].length)];
+            
+            resetValues();
+            UI.displays.key.textContent = key;
+            UI.displays.direction.textContent = direction;
+            UI.displays.quality.textContent = qualityKey;
             UI.displays.pairing.textContent = pairing;
         }
     };
