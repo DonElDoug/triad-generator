@@ -45,6 +45,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    // Matrix effect helper function
+    const matrixEffect = (element, finalText, iterations = 15, interval = 25) => {
+                const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?";
+        let currentIteration = 0;
+        const timer = setInterval(() => {
+            let displayText = "";
+            for (let i = 0; i < finalText.length; i++) {
+                if (Math.random() < currentIteration / iterations) {
+                    displayText += finalText[i];
+                } else {
+                    displayText += characters[Math.floor(Math.random() * characters.length)];
+                }
+            }
+            element.textContent = displayText;
+            if (currentIteration >= iterations) {
+                clearInterval(timer);
+                element.textContent = finalText;
+                            }
+            currentIteration++;
+        }, interval);
+    };
+
     const updateUI = () => {
         document.querySelector(".title").textContent = `Level ${CONFIG.levels.current}`;
     
@@ -69,33 +91,33 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let qualityKey, pairing;
 
+        resetValues();
+
         if (level === 1) {
             // Level 1: Simple Major/Minor qualities
             qualityKey = CONFIG.qualities[1][Math.floor(Math.random() * CONFIG.qualities[1].length)];
-            resetValues();
-            UI.displays.key.textContent = key;
-            UI.displays.direction.textContent = direction;
-            UI.displays.quality.textContent = qualityKey;
+            matrixEffect(UI.displays.key, key);
+            matrixEffect(UI.displays.direction, direction);
+            matrixEffect(UI.displays.quality, qualityKey);
         } else if (level === 2) {
             // Level 2: Advanced qualities and pairings
             qualityKey = CONFIG.qualities[2][Math.floor(Math.random() * CONFIG.qualities[2].length)];
             pairing = CONFIG.pairings[qualityKey][Math.floor(Math.random() * CONFIG.pairings[qualityKey].length)];
             
-            resetValues();
-            UI.displays.key.textContent = key;
-            UI.displays.direction.textContent = direction;
-            UI.displays.quality.textContent = qualityKey.replace("-", "/");
-            UI.displays.pairing.textContent = pairing;
+            matrixEffect(UI.displays.key, key);
+            matrixEffect(UI.displays.direction, direction);
+            // Replace "-" with "/" in quality for display
+            matrixEffect(UI.displays.quality, qualityKey.replace("-", "/"));
+            matrixEffect(UI.displays.pairing, pairing);
         } else if (level === 3) {
             // Level 3: Mixing suspended chords with Major/Minor
             qualityKey = CONFIG.qualities[3][Math.floor(Math.random() * CONFIG.qualities[3].length)];
             pairing = CONFIG.pairings[qualityKey][Math.floor(Math.random() * CONFIG.pairings[qualityKey].length)];
             
-            resetValues();
-            UI.displays.key.textContent = key;
-            UI.displays.direction.textContent = direction;
-            UI.displays.quality.textContent = qualityKey;
-            UI.displays.pairing.textContent = pairing;
+            matrixEffect(UI.displays.key, key);
+            matrixEffect(UI.displays.direction, direction);
+            matrixEffect(UI.displays.quality, qualityKey);
+            matrixEffect(UI.displays.pairing, pairing);
         }
     };
 

@@ -95,6 +95,51 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+@keyframes matrix-click {
+    0% {
+      transform: scale(0.98);
+      box-shadow: 
+        0 0 8px rgba(41,190,111,0.3),
+        0 0 12px rgba(41,190,111,0.2);
+    }
+    50% {
+      transform: scale(0.96);
+      box-shadow: 
+        0 0 12px rgba(41,190,111,0.4),
+        0 0 16px rgba(41,190,111,0.3);
+    }
+    100% {
+      transform: scale(0.98);
+      box-shadow: 
+        0 0 8px rgba(41,190,111,0.3),
+        0 0 12px rgba(41,190,111,0.2);
+    }
+  }
+  
+  .generate-btn {
+    /* Keep your existing styles */
+    transition: 
+      transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow var(--transition-speed) ease-out;
+  }
+  
+  .generate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 4px 6px rgba(41,190,111,0.15),
+      0 0 8px rgba(41,190,111,0.1);
+  }
+  
+  .generate-btn:active {
+    animation: matrix-click 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.96);
+    box-shadow: 
+      0 0 12px rgba(41,190,111,0.3),
+      0 0 16px rgba(41,190,111,0.2);
+  }
+
+
+
 .output-container {
     background: var(--card-bg);
     border-radius: 12px;
