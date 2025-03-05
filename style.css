@@ -205,7 +205,7 @@ body {
 }
 
 /* Mobile Responsive Styles */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .bpm_container {
         padding: calc(2 * var(--unit));
         border-radius: 0;
@@ -239,8 +239,8 @@ body {
     }
 
     .output-container {
-        width: 80%;
-        max-width: 80%;
+        width: 100%;
+        max-width: 100%;
         padding: calc(1 * var(--unit)) calc(2 * var(--unit));
     }
 
