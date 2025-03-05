@@ -250,7 +250,7 @@ body {
         overflow: visible;
         text-overflow: clip;
         max-width: 100%;
-        text-align: left;
+        text-align: right;
         align-self: flex-start;
         overflow-wrap: break-word;
     }
