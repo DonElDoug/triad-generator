@@ -47,11 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Matrix effect helper function
     const matrixEffect = (element, finalText, iterations = 15, interval = 25) => {
-                const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?";
+        const visibleLength = Math.min(finalText.length, 10);
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?";
         let currentIteration = 0;
         const timer = setInterval(() => {
             let displayText = "";
-            for (let i = 0; i < finalText.length; i++) {
+            for (let i = 0; i < visibleLength; i++) {
                 if (Math.random() < currentIteration / iterations) {
                     displayText += finalText[i];
                 } else {
@@ -61,8 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
             element.textContent = displayText;
             if (currentIteration >= iterations) {
                 clearInterval(timer);
+                // When finished, show the full text.
                 element.textContent = finalText;
-                            }
+            }
             currentIteration++;
         }, interval);
     };

@@ -254,6 +254,7 @@ body {
         align-self: flex-start;
         overflow-wrap: break-word;
         margin-left: auto; /* This forces the element to push right */
+        min-height: 23px; /* Fixed minimum height to reduce jiggling */
     }
 
     .output-row {
@@ -284,7 +285,7 @@ body {
 
     .output-container {
         width: 100%;
-        padding: calc(2 * var(--unit)) calc(3 * var(--unit));
+        padding: calc(2 * var(--unit)) calc(0.5 * var(--unit));
         margin-top: calc(2 * var(--unit));
     }
 
