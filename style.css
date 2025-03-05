@@ -191,5 +191,6 @@ body {
         overflow: visible;
         text-overflow: clip;
         max-width: 100%;
+        align-self: left;
     }
 }
