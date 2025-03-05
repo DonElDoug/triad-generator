@@ -260,3 +260,46 @@ body {
         justify-content: flex-start;
     }
 }
+
+@media (max-width: 600px) {
+    .bpm_container {
+        padding: calc(3 * var(--unit));
+        gap: calc(4 * var(--unit));
+        margin: calc(2 * var(--unit));
+        border-radius: 0;
+    }
+
+    .header {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 calc(1 * var(--unit));
+        margin: 0 auto calc(1.5 * var(--unit));
+    }
+
+    .generate-btn {
+        width: 140px;
+        height: 40px;
+        font-size: clamp(14px, 3vw, 16px);
+    }
+
+    .output-container {
+        width: 100%;
+        padding: calc(2 * var(--unit)) calc(3 * var(--unit));
+        margin-top: calc(2 * var(--unit));
+    }
+
+    .output-row {
+        padding: calc(1.5 * var(--unit)) calc(1.5 * var(--unit));
+    }
+
+    .output-value {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: 100%;
+        text-align: right;
+        align-self: flex-start;
+        overflow-wrap: break-word;
+        margin-left: auto;
+    }
+}
