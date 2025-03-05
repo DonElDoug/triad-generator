@@ -254,4 +254,8 @@ body {
         align-self: flex-start;
         overflow-wrap: break-word;
     }
+
+    .output-row {
+        justify-content: flex-start;
+    }
 }
