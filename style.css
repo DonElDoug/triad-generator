@@ -155,6 +155,8 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 60%;
+    text-align: left;         /* force left text alignment */
+    align-self: flex-start;    /* ensures left alignment in the flex container */
 }
 
 /* Mobile Responsive Styles */
@@ -165,12 +167,24 @@ body {
     }
 
     .header {
-        max-width: 100%;
-        padding: 0 calc(1 * var(--unit));
+        max-width: 200px;           /* keep same width as desktop */
+        width: 100%;
+        padding: 0 calc(0.5 * var(--unit));
+        justify-content: space-between; /* arrows at the edges */
+        margin: 0 auto;             /* center the header container */
     }
 
+    /* Remove extra margins on arrows */
+    .header .arrow.prev,
+    .header .arrow.next {
+        margin: 0;
+    }
+
+    /* Title stays centered */
     .title {
-        font-size: clamp(20px, 4vw, 22px);
+        flex-grow: 1;
+        margin: 0 calc(0.5 * var(--unit));
+        text-align: center;
     }
 
     .generate-btn {
@@ -191,7 +205,8 @@ body {
         overflow: visible;
         text-overflow: clip;
         max-width: 100%;
-        align-self: flex-start; /* use flex-start instead of left */
-        overflow-wrap: break-word; /* ensures long unbroken text wraps */
+        text-align: left;
+        align-self: flex-start;
+        overflow-wrap: break-word;
     }
 }
