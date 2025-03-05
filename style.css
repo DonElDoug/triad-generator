@@ -253,6 +253,7 @@ body {
         text-align: right;
         align-self: flex-start;
         overflow-wrap: break-word;
+        margin-left: auto; /* This forces the element to push right */
     }
 
     .output-row {
