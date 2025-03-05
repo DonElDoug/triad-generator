@@ -239,8 +239,8 @@ body {
     }
 
     .output-container {
-        width: 95%;
-        max-width: 95%;
+        width: 80%;
+        max-width: 80%;
         padding: calc(1 * var(--unit)) calc(2 * var(--unit));
     }
 
