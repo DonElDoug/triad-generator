@@ -186,11 +186,12 @@ body {
     }
 
     .output-value {
-        /* Mobile: allow wrapping to show full text */
+        /* Mobile: allow wrapping and prevent overflow */
         white-space: normal;
         overflow: visible;
         text-overflow: clip;
         max-width: 100%;
-        align-self: left;
+        align-self: flex-start; /* use flex-start instead of left */
+        overflow-wrap: break-word; /* ensures long unbroken text wraps */
     }
 }
